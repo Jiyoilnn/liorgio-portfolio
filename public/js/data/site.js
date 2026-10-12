@@ -14,8 +14,8 @@ export const site = {
   location: 'Caloocan City, Metro Manila, Philippines',
   email: 'ilananliorgio@gmail.com',
   socials: [
-    { label: 'GitHub', url: '' },     // e.g. 'https://github.com/your-username'
-    { label: 'LinkedIn', url: '' },   // e.g. 'https://www.linkedin.com/in/your-name'
+    { label: 'GitHub', url: 'https://github.com/Jiyoilnn' },
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/liorgio-i-025262360' }, // update if you change your custom URL
     { label: 'Dribbble', url: '' },
   ],
   portrait: {
