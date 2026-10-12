@@ -8,7 +8,7 @@
  *  - The whole figure tilts with CSS perspective (rotateX / rotateY from the pointer).
  *  - Inside the head, each layer (back hair, face, eyes, brows, fringe) shifts by a
  *    different amount — near layers move more — so the face seems to turn in space.
- *  - Idle life: breathing, blinking, swaying curls. Click = smile + wave hello.
+ *  - Idle life: breathing, blinking, swaying curls. Click = smile + say hello.
  * With "reduce motion" on, the avatar stays still.
  */
 import { s } from '../lib/charts.js';
@@ -114,15 +114,6 @@ function buildSvg() {
         s('path', { d: 'M90 410 Q110 440 104 506 M310 410 Q290 440 296 506', fill: 'none', stroke: C.sweaterShade, 'stroke-width': 3, opacity: 0.8 }),
         s('circle', { cx: 262, cy: 428, r: 10, fill: '#ffd400', class: 'av-emblem' }),
         s('path', { d: 'M259 422 V433 H266', fill: 'none', stroke: '#0a0a08', 'stroke-width': 2.4, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })),
-      s('g', { class: 'av-arm' },
-      s('path', { d: 'M296 380 L346 352 L352 300', fill: 'none', stroke: 'url(#av-sweater)', 'stroke-width': 36, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }),
-      s('path', { d: 'M334 300 L370 300', stroke: C.sweaterShade, 'stroke-width': 9, 'stroke-linecap': 'round' }), // cuff
-      s('g', { transform: 'translate(352 300) scale(1.3) translate(-352 -300)' }, s('g', { class: 'av-hand' },
-        ['337', '346', '355', '364'].map((x, i) => s('rect', { x, y: [238, 232, 234, 242][i], width: 9, height: 44, rx: 4.5, fill: C.skin, stroke: C.skinShade, 'stroke-width': 1.4 })),
-        s('rect', { x: 322, y: 268, width: 10, height: 30, rx: 5, fill: C.skin, stroke: C.skinShade, 'stroke-width': 1.4, transform: 'rotate(-38 327 283)' }),
-        s('rect', { x: 333, y: 262, width: 42, height: 38, rx: 14, fill: C.skin, stroke: C.skinShade, 'stroke-width': 1.4 }),
-        s('path', { d: 'M341 266 V258 M350 262 V254 M359 263 V255', stroke: C.skinShade, 'stroke-width': 1.2, 'stroke-linecap': 'round', opacity: 0.6 })))),
-
       // ---- head (JS rotates this group; its children move by different depths)
       s('g', { transform: 'translate(200 300) scale(1.13) translate(-200 -300)' }, s('g', { class: 'av-head', id: 'av-head' },
         s('g', { 'data-depth': 1.5 }, backCurls,
@@ -191,7 +182,7 @@ export function mountAvatar(host) {
     host.classList.add('still');
   }
 
-  // click / tap / Enter: smile, wave and say hi
+  // click / tap / Enter: smile and say hi
   const hello = () => {
     host.classList.remove('is-happy'); void host.offsetWidth; // restart the animation
     host.classList.add('is-happy');

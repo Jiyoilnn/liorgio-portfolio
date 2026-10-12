@@ -365,14 +365,9 @@
 .av-mouth-smile { opacity: 0; transition: opacity 0.25s; }
 .av-mouth-neutral { transition: opacity 0.25s; }
 .av-brows path { transition: transform 0.3s var(--ease); }
-.av-arm { opacity: 0; transform-origin: 296px 380px; transform: rotate(60deg); transition: opacity 0.4s, transform 0.5s var(--ease); } /* pivots at the shoulder */
 .is-happy .av-mouth-smile { opacity: 1; } .is-happy .av-mouth-neutral { opacity: 0; }
 .is-happy .av-blush { opacity: 0.55; }
 .is-happy .av-brows path { transform: translateY(-4px); }
-.is-happy .av-arm { opacity: 1; transform: rotate(0deg); }
-.av-hand { transform-origin: 352px 300px; } /* the hand waves from the wrist */
-.is-happy .av-hand { animation: av-wave 0.32s ease-in-out 0.35s 6 alternate; }
-@keyframes av-wave { from { transform: rotate(-16deg); } to { transform: rotate(14deg); } }
 .av-bubble { position: absolute; top: 9%; right: -6%; z-index: 3; padding: 10px 16px; border-radius: 16px 16px 4px 16px; background: var(--accent); color: var(--accent-ink); font-weight: 800; font-size: 0.92rem; box-shadow: 0 4px 0 var(--accent-ledge), 0 16px 40px rgba(0, 0, 0, 0.5); transform: scale(0.4) translateY(10px); opacity: 0; transform-origin: 100% 100%; transition: transform 0.35s var(--ease), opacity 0.25s; pointer-events: none; }
 .is-happy .av-bubble { opacity: 1; transform: none; }
 .av-hint { position: absolute; right: 16px; bottom: 16px; z-index: 2; font: 600 0.62rem var(--mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
