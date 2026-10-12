@@ -73,8 +73,26 @@ function buildSvg() {
   const fx = [148, 162, 176, 190, 204, 218, 232, 246, 155, 183, 211, 239];
   const fy = [186, 192, 186, 194, 188, 194, 187, 182, 174, 176, 176, 172];
   fx.forEach((x, i) => fringe.push(curl(x, fy[i], 10 + r() * 4, i < 8 ? C.hairMid : C.hair, i % 2 ? C.hairTip : C.hairHi, 160 + r() * 80)));
+  // the cap: covers the whole top of the head down to a wavy hairline (no "bald" gaps)
+  const cap = s('path', { d: 'M126 214 C114 158 128 86 200 82 C272 86 286 158 274 214 C266 200 256 194 246 198 C236 188 222 192 212 186 C204 192 196 192 188 186 C178 192 164 188 154 198 C144 194 134 200 126 214 Z', fill: C.hair });
+  // extra ringlets packed along the hairline + temples so the edge looks curly, not cut
+  const edge = [];
+  const ex = [132, 142, 266, 258, 136, 264, 150, 250];
+  const ey = [204, 186, 204, 186, 168, 168, 150, 150];
+  ex.forEach((x, i) => edge.push(curl(x, ey[i], 12 + r() * 4, i % 2 ? C.hairMid : C.hair, i % 2 ? C.hairTip : C.hairHi, 170 + r() * 60)));
+  // a second, denser layer of crown curls
+  for (let i = 0; i < 22; i++) {
+    const cx = 140 + r() * 120, cy = 92 + r() * 80;
+    texture.push(curl(+cx.toFixed(1), +cy.toFixed(1), 11 + r() * 6, i % 2 ? C.hair : C.hairMid, i % 3 ? C.hairHi : C.hairTip, 190 + r() * 80));
+  }
   const backCurls = [outline, mass];
-  const crown = texture;
+  // ringlets along the top silhouette (in front), so the outline is bumpy and full
+  for (let i = 0; i <= 16; i++) {
+    const ang = Math.PI * (1.0 + (i / 16) * 1.0);
+    edge.push(curl(+(200 + Math.cos(ang) * 80).toFixed(1), +(150 + Math.sin(ang) * 66).toFixed(1), 14 + r() * 5, i % 2 ? C.hairMid : C.hair, i % 3 ? C.hairTip : C.hairHi, 180 + r() * 70));
+  }
+  // NOTE: spread the arrays — the SVG helper only flattens one level of nesting
+  const crown = [cap, ...edge, ...texture];
 
   return s('svg', { viewBox: '0 0 400 480', class: 'av-svg', role: 'img', 'aria-label': 'Animated anime-style avatar of Liorgio with curly hair and a black crewneck' },
     s('defs', {},
@@ -96,6 +114,14 @@ function buildSvg() {
         s('path', { d: 'M90 410 Q110 440 104 506 M310 410 Q290 440 296 506', fill: 'none', stroke: C.sweaterShade, 'stroke-width': 3, opacity: 0.8 }),
         s('circle', { cx: 262, cy: 428, r: 10, fill: '#ffd400', class: 'av-emblem' }),
         s('path', { d: 'M259 422 V433 H266', fill: 'none', stroke: '#0a0a08', 'stroke-width': 2.4, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })),
+      s('g', { class: 'av-arm' },
+      s('path', { d: 'M296 380 L346 352 L352 300', fill: 'none', stroke: 'url(#av-sweater)', 'stroke-width': 36, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }),
+      s('path', { d: 'M334 300 L370 300', stroke: C.sweaterShade, 'stroke-width': 9, 'stroke-linecap': 'round' }), // cuff
+      s('g', { transform: 'translate(352 300) scale(1.3) translate(-352 -300)' }, s('g', { class: 'av-hand' },
+        ['337', '346', '355', '364'].map((x, i) => s('rect', { x, y: [238, 232, 234, 242][i], width: 9, height: 44, rx: 4.5, fill: C.skin, stroke: C.skinShade, 'stroke-width': 1.4 })),
+        s('rect', { x: 322, y: 268, width: 10, height: 30, rx: 5, fill: C.skin, stroke: C.skinShade, 'stroke-width': 1.4, transform: 'rotate(-38 327 283)' }),
+        s('rect', { x: 333, y: 262, width: 42, height: 38, rx: 14, fill: C.skin, stroke: C.skinShade, 'stroke-width': 1.4 }),
+        s('path', { d: 'M341 266 V258 M350 262 V254 M359 263 V255', stroke: C.skinShade, 'stroke-width': 1.2, 'stroke-linecap': 'round', opacity: 0.6 })))),
 
       // ---- head (JS rotates this group; its children move by different depths)
       s('g', { transform: 'translate(200 300) scale(1.13) translate(-200 -300)' }, s('g', { class: 'av-head', id: 'av-head' },
@@ -113,12 +139,7 @@ function buildSvg() {
         s('g', { 'data-depth': 5.5, class: 'av-brows' },
           s('path', { d: 'M152 212 Q170 202 192 208', fill: 'none', stroke: C.line, 'stroke-width': 6.5, 'stroke-linecap': 'round' }),
           s('path', { d: 'M248 212 Q230 202 208 208', fill: 'none', stroke: C.line, 'stroke-width': 6.5, 'stroke-linecap': 'round' })),
-        s('g', { 'data-depth': 7, class: 'av-hairtop' }, crown, fringe)))),
-
-    // a waving hand that appears on click
-    s('g', { class: 'av-wave' },
-      s('path', { d: 'M318 300 q-6 -34 8 -40 q8 -2 9 10 l2 -26 q2 -10 10 -8 q7 2 6 12 l1 -6 q2 -9 10 -7 q7 2 6 12 l-1 8 q3 -8 9 -6 q7 3 4 14 l-8 38 q-6 22 -30 22 q-22 0 -26 -23 Z', fill: C.skin, stroke: C.skinShade, 'stroke-width': 2 }),
-      s('path', { d: 'M300 360 Q310 330 322 318 L346 330 Q336 350 330 372 Z', fill: 'url(#av-sweater)' })));
+        s('g', { 'data-depth': 7, class: 'av-hairtop' }, crown, fringe)))));
 }
 
 /** Mount the avatar into `host` and wire up the motion. */
