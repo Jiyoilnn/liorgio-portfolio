@@ -9,6 +9,7 @@ import { site, nav } from './data/site.js';
 import { initTilt } from './lib/tilt.js';
 import { getMode } from './lib/api.js';
 import { initCopyEmail } from './components/copy-email.js';
+import { initSound, cycleSound, getSoundMode, onSoundChange, play } from './lib/sound.js';
 
 const file = location.pathname.split('/').pop() || 'index.html';
 const isHome = file === 'index.html' || file === '';
@@ -26,6 +27,7 @@ function buildHeader() {
 
   const toggle = h('button', { class: 'nav-toggle', type: 'button', 'aria-label': 'Open menu', 'aria-expanded': 'false', 'aria-controls': 'nav-links' }, h('span'), h('span'), h('span'));
   const setOpen = (open) => {
+    play(open ? 'open' : 'close');
     links.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
@@ -39,9 +41,26 @@ function buildHeader() {
     h('div', { class: 'container nav-inner' },
       h('a', { class: 'logo', href: 'index.html', 'aria-label': `${site.name}, home` }, h('span', { class: 'logo-mark', 'aria-hidden': 'true' }, 'L'), h('span', {}, site.firstName, h('b', {}, '.'))),
       links,
-      h('a', { class: 'button nav-cta', href: `mailto:${site.email}` }, 'Email me'),
-      toggle),
+      h('div', { class: 'nav-actions' }, soundButton(), h('a', { class: 'button nav-cta', href: `mailto:${site.email}` }, 'Email me'), toggle)),
     h('div', { class: 'scroll-progress', 'aria-hidden': 'true' }));
+}
+
+/** Sound toggle: All sound -> Effects only -> Muted (see lib/sound.js). */
+function soundButton() {
+  const LABEL = { all: 'Sound: music + effects (click for effects only)', fx: 'Sound: effects only (click to mute)', off: 'Sound muted (click to turn on)' };
+  const btn = h('button', { class: 'sound-toggle', type: 'button' },
+    h('span', { class: 'eq', 'aria-hidden': 'true' }, h('i'), h('i'), h('i'), h('i')),
+    h('span', { class: 'sound-text' }));
+  const sync = (mode) => {
+    btn.dataset.mode = mode;
+    btn.setAttribute('aria-label', LABEL[mode]);
+    btn.title = LABEL[mode];
+    btn.querySelector('.sound-text').textContent = { all: 'Sound on', fx: 'FX only', off: 'Muted' }[mode];
+  };
+  btn.addEventListener('click', () => sync(cycleSound()));
+  onSoundChange(sync);
+  sync(getSoundMode());
+  return btn;
 }
 
 function buildFooter() {
@@ -87,7 +106,10 @@ if (isHome && 'IntersectionObserver' in window) {
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const io = !reduced && 'IntersectionObserver' in window
   ? new IntersectionObserver((entries) => {
-    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    for (const e of entries) if (e.isIntersecting) {
+      e.target.classList.add('in'); io.unobserve(e.target);
+      if (e.target.classList.contains('reveal-3d') && e.target.tagName === 'H2') dispatchEvent(new CustomEvent('ui-sound', { detail: 'whoosh' }));
+    }
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
   : null;
 
@@ -100,6 +122,7 @@ function initReveal() {
   });
 }
 
+initSound();
 initReveal();
 initTilt();
 initCopyEmail();

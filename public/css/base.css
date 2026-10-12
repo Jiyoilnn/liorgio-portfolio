@@ -269,3 +269,16 @@ footer { border-top: 1px solid var(--line); padding-block: 34px; color: var(--mu
   .reveal, .reveal-3d { opacity: 1; transform: none; }
 }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } /* visible to screen readers only */
+
+/* ---------- nav actions + sound toggle ---------- */
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.sound-toggle { margin: 0; padding: 8px 12px; gap: 8px; font: 600 0.72rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; background: rgba(255, 255, 255, 0.04); color: var(--text-2); border: 1px solid var(--line-2); box-shadow: none; }
+.sound-toggle::after { display: none; }
+.sound-toggle:hover:not(:disabled) { transform: translateY(-1px); box-shadow: none; color: var(--accent); border-color: var(--accent); }
+.sound-toggle .eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; }
+.sound-toggle .eq i { width: 3px; height: 30%; border-radius: 2px; background: var(--accent); animation: eq 1s ease-in-out infinite; }
+.sound-toggle .eq i:nth-child(2) { animation-delay: -0.3s; } .sound-toggle .eq i:nth-child(3) { animation-delay: -0.6s; } .sound-toggle .eq i:nth-child(4) { animation-delay: -0.15s; }
+@keyframes eq { 50% { height: 100%; } }
+.sound-toggle[data-mode="fx"] .eq i { animation: none; height: 45%; }
+.sound-toggle[data-mode="off"] .eq i { animation: none; height: 18%; background: var(--muted); }
+@media (max-width: 860px) { .sound-toggle .sound-text { display: none; } .sound-toggle { padding: 10px 12px; } }

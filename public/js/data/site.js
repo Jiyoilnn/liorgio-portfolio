@@ -10,7 +10,7 @@
 export const site = {
   name: 'Liorgio Ilanan',
   firstName: 'Liorgio',
-  role: 'UI/UX Designer & Full-Stack Developer',
+  role: 'Web Designer & Developer',
   location: 'Caloocan City, Metro Manila, Philippines',
   email: 'ilananliorgio@gmail.com',
   socials: [

@@ -9,23 +9,21 @@ export const featuredIds = ['friesta-ordering', 'pulse-saas-dashboard', 'maison-
  * Skills. `status`:
  *   'core'        -> confirmed skills you listed yourself (HTML, CSS, JavaScript, UI design)
  *   'demo'        -> used to build the demos in this repository (you're learning them by doing)
- *   'placeholder' -> NOT confirmed. Shown with a "placeholder" tag. Change to 'core' only if true,
- *                    or delete the line.
  */
 export const tech = [
   { name: 'HTML', status: 'core', note: 'Semantic, accessible markup on every page.' },
   { name: 'CSS', status: 'core', note: 'Design tokens, Grid, 3D transforms, container queries.' },
   { name: 'JavaScript', status: 'core', note: 'ES modules, DOM, fetch, canvas.' },
   { name: 'UI Design', status: 'core', note: 'Layouts, type, colour and components.' },
+  { name: 'Figma', status: 'core', note: 'Designing interfaces and prototypes.' },
+  { name: 'React', status: 'core', note: 'Component-based front ends.' },
+  { name: 'TypeScript', status: 'core', note: 'Typed, safer JavaScript.' },
+  { name: 'SQL databases', status: 'core', note: 'Structured data and queries.' },
   { name: 'Node.js', status: 'demo', note: 'The zero-dependency API behind the demos.' },
   { name: 'REST APIs', status: 'demo', note: 'Orders, analytics, leaderboards.' },
   { name: 'Canvas 3D', status: 'demo', note: 'A hand-written mini 3D engine.' },
   { name: 'Git & GitHub Actions', status: 'demo', note: 'CI tests and Pages deployment.' },
   { name: 'Automated testing', status: 'demo', note: 'node:test integration and unit tests.' },
-  { name: 'Figma', status: 'placeholder', note: 'Placeholder: keep only if you use it.' },
-  { name: 'React', status: 'placeholder', note: 'Placeholder: keep only if you use it.' },
-  { name: 'TypeScript', status: 'placeholder', note: 'Placeholder: keep only if you use it.' },
-  { name: 'SQL databases', status: 'placeholder', note: 'Placeholder: keep only if you use it.' },
 ];
 
 /** Capability areas (what you focus on, not years of experience). */
@@ -60,14 +58,10 @@ export const caseStudies = [
 ];
 
 /**
- * Experience. Only real entries should have `placeholder: false`.
- * Replace the placeholders with your own history (or delete them).
- * Placeholders are hidden when site.showPlaceholders is false (data/site.js).
+ * Experience. Add a new object for each role, internship, course or programme.
  */
 export const experience = [
-  { period: '2026 — Present', role: 'Self-directed UI/UX & full-stack learning', org: 'Independent', text: 'Designing and building the projects in this portfolio: interface concepts, a Node.js API, automated tests and GitHub Pages deployment.', placeholder: false },
-  { period: 'YYYY — YYYY', role: '[Your role or internship]', org: '[Company / organisation]', text: 'Placeholder: describe what you did and what you learned. Edit it in js/data/home.js.', placeholder: true },
-  { period: 'YYYY — YYYY', role: '[Your course or programme]', org: '[School]', text: 'Placeholder: add your education or training here.', placeholder: true },
+  { period: '2026 — Present', role: 'Self-directed web design & development', org: 'Independent', text: 'Designing and building the projects in this portfolio: interface concepts, a Node.js API, automated tests and GitHub Pages deployment.', placeholder: false },
 ];
 
 export const faq = [

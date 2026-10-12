@@ -59,6 +59,7 @@ export function toast(message, kind = 'info') {
   let host = qs('#toasts');
   if (!host) { host = h('div', { id: 'toasts', 'aria-live': 'polite' }); document.body.append(host); }
   const t = h('div', { class: `toast toast-${kind}`, role: 'status' }, message);
+  if (kind === 'success' || kind === 'error') dispatchEvent(new CustomEvent('ui-sound', { detail: kind }));
   host.append(t);
   requestAnimationFrame(() => t.classList.add('show'));
   setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 300); }, 3200);
