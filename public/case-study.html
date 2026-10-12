@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090b">
+  <meta name="description" content="Case study: evolving a set of learning exercises into a connected, full-stack portfolio.">
+  <meta property="og:title" content="Case Study | Liorgio Ilanan">
+  <meta property="og:description" content="Case study: evolving a set of learning exercises into a connected, full-stack portfolio.">
+  <title>Case Study | Liorgio Ilanan</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script type="module" src="js/layout.js"></script>
+</head>
+<body data-section="work">
+  <div id="site-header"></div>
+  <main id="main" class="container">
+    <p class="eyebrow">Case Study 01 / Portfolio architecture</p>
+    <h1>Building a <span class="accent">full-stack</span> portfolio.</h1>
+    <p class="lede">A self-initiated case study on how a set of separate HTML pages became one connected product with a real API, tests and a shared design system. It is a concept project, not client work.</p>
+
+    <div class="case-meta">
+      <span class="pill">Role: Designer &amp; Developer</span><span class="pill">Tools: HTML · CSS · JavaScript · Node.js</span><span class="pill">Focus: Architecture &amp; UX</span>
+    </div>
+
+    <div class="card reveal">
+      <p class="eyebrow">01 / The challenge</p>
+      <h2>Make separate projects feel like one product.</h2>
+      <p>Individual HTML pages drift apart: different navigation, copy-pasted styles, fake buttons that don't actually do anything. The goal was to rebuild the portfolio so the projects share one design system, one data layer and one back end, so an order placed in the store really shows up in the analytics dashboard.</p>
+    </div>
+
+    <section class="section reveal">
+      <p class="eyebrow">02 / Architecture</p>
+      <h2>One API client, two ways to answer</h2>
+      <p>Pages never call <code>fetch</code> directly. They use <code>api.js</code>, which checks whether the Node server is reachable. If it is, requests go over HTTP. If not (for example on GitHub Pages), the same endpoints are emulated in the browser with localStorage, using the exact same business code.</p>
+      <div class="diagram">
+        <svg viewBox="0 0 760 330" role="img" aria-label="Diagram: the browser pages call api.js, which sends requests either to the Node server or to the in-browser mock API. Both use the shared business logic.">
+          <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9b9ea6"/></marker></defs>
+          <rect class="box" x="20" y="125" width="150" height="70" rx="12"/><text x="95" y="156" text-anchor="middle">Pages</text><text class="sub" x="95" y="176" text-anchor="middle">HTML + modules</text>
+          <rect class="box hot" x="230" y="125" width="150" height="70" rx="12"/><text x="305" y="156" text-anchor="middle">api.js</text><text class="sub" x="305" y="176" text-anchor="middle">detects the mode</text>
+          <rect class="box" x="450" y="30" width="150" height="70" rx="12"/><text x="525" y="61" text-anchor="middle">Node server</text><text class="sub" x="525" y="81" text-anchor="middle">routes · security</text>
+          <rect class="box" x="450" y="220" width="150" height="70" rx="12"/><text x="525" y="251" text-anchor="middle">Mock API</text><text class="sub" x="525" y="271" text-anchor="middle">localStorage</text>
+          <rect class="box hot" x="640" y="125" width="110" height="70" rx="12"/><text x="695" y="156" text-anchor="middle">shared/</text><text class="sub" x="695" y="176" text-anchor="middle">pricing · rules</text>
+          <path class="arrow" d="M170 160H228"/><path class="arrow" d="M380 145L448 85"/><path class="arrow" d="M380 175L448 235"/><path class="arrow" d="M600 70L670 123"/><path class="arrow" d="M600 250L670 197"/>
+          <text class="sub" x="415" y="108">live</text><text class="sub" x="415" y="232">demo</text>
+        </svg>
+      </div>
+    </section>
+
+    <div class="case-step reveal"><div class="step-no">03</div><div><h3>Never trust the client</h3><p>The cart in the browser only stores item IDs and quantities. When you check out, the server looks up the real prices, checks stock, applies promo rules and calculates the total itself. A tampered request can't buy a ₱1,490 hoodie for ₱1. There's an automated test for exactly that.</p></div></div>
+    <div class="case-step reveal"><div class="step-no">04</div><div><h3>Shared logic, written once</h3><p>Pricing, validation and analytics live in <code>public/js/shared/</code> as pure functions. The browser uses them for instant feedback, the server uses them as the authority, and the tests exercise them directly. Fixing a bug once fixes it everywhere.</p></div></div>
+    <div class="case-step reveal"><div class="step-no">05</div><div><h3>Depth with restraint</h3><p>Black and yellow keep the interface calm. Depth comes from two techniques: CSS 3D tilt on cards, and a small hand-written canvas engine for the hero and the fries carton. Both switch off for visitors who prefer reduced motion, and the canvas pauses when off-screen to save battery.</p></div></div>
+    <div class="case-step reveal"><div class="step-no">06</div><div><h3>What testing found</h3><p>Writing integration tests exposed a real bug: stock was checked per cart line, so adding the same product on three lines could oversell it. The fix aggregates quantities per product first, and the test now guards against it.</p></div></div>
+
+    <div class="callout reveal"><p><strong>Reflection</strong></p><p>A consistent portfolio is more than a visual theme. Clear structure, shared code, honest data and accessible interactions matter just as much. Next steps are a real database, user accounts, and browser-based end-to-end tests.</p></div>
+    <a class="button" href="projects.html">Explore Projects →</a>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>

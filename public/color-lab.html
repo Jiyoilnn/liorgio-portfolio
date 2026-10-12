@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090b">
+  <meta name="description" content="Color Lab: generate harmonious palettes, lock colours, check WCAG contrast and export CSS variables.">
+  <meta property="og:title" content="Color Lab | Liorgio Ilanan">
+  <meta property="og:description" content="Color Lab: generate harmonious palettes, lock colours, check WCAG contrast and export CSS variables.">
+  <title>Color Lab | Liorgio Ilanan</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script type="module" src="js/layout.js"></script>
+  <script type="module" src="js/pages/color-lab.js"></script>
+</head>
+<body data-section="work">
+  <div id="site-header"></div>
+  <main id="main" class="container">
+    <p class="eyebrow">Project 06 / Design tool</p>
+    <h1>Color <span class="accent">Lab.</span></h1>
+    <p class="lede">Generate a palette from a colour-wheel harmony, lock the swatches you like, check their contrast against WCAG and export the result. Press <kbd>Space</kbd> to regenerate.</p>
+    <section class="card">
+      <div class="toolbar" style="margin-top:0">
+        <div class="chips" id="modes" role="group" aria-label="Harmony"><button class="chip" data-mode="analogous" aria-pressed="true">Analogous</button><button class="chip" data-mode="complementary">Complementary</button><button class="chip" data-mode="triad">Triad</button><button class="chip" data-mode="monochrome">Monochrome</button><button class="chip" data-mode="random">Random</button></div>
+        <div><button id="generate" type="button">Generate ↻</button><button class="outline" id="save-palette" type="button">Save palette</button></div>
+      </div>
+      <div class="palette" id="palette"></div>
+      <div id="saved" class="saved"></div>
+    </section>
+    <section class="section grid">
+      <article class="card"><span class="tag">CONTRAST CHECKER</span><h3>Is this text readable?</h3><div id="checker"></div></article>
+      <article class="card"><span class="tag">EXPORT</span><h3>Take it with you</h3>
+        <div class="field"><label for="format">Format</label><select id="format"><option value="css">CSS variables</option><option value="json">JSON</option><option value="tailwind">Tailwind config</option></select></div>
+        <pre class="code" id="export"></pre><button class="outline" id="copy-export" type="button">Copy</button></article>
+    </section>
+    <div class="callout"><p>WCAG AA needs a contrast ratio of at least <strong>4.5:1</strong> for normal text and 3:1 for large text. AAA asks for 7:1.</p></div>
+    <a class="button outline" href="projects.html">← All Projects</a>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>

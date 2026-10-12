@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090b">
+  <meta name="description" content="Contact Liorgio Ilanan. Send a message or reach out by email.">
+  <meta property="og:title" content="Contact | Liorgio Ilanan">
+  <meta property="og:description" content="Contact Liorgio Ilanan. Send a message or reach out by email.">
+  <title>Contact | Liorgio Ilanan</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script type="module" src="js/layout.js"></script>
+  <script type="module" src="js/pages/contact.js"></script>
+</head>
+<body data-api>
+  <div id="site-header"></div>
+  <main id="main" class="container">
+    <p class="eyebrow">Let's connect</p>
+    <h1 class="text-3d">Contact <span class="accent">me.</span></h1>
+    <p class="lede">Have a question, an idea, or a project in mind? Email is the fastest way to reach me. You can also use the form.</p>
+
+    <div class="contact-layout">
+      <form id="contact-form" class="card" novalidate>
+        <span class="tag">SEND A MESSAGE</span>
+        <p class="form-note" id="form-note" hidden></p>
+        <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required maxlength="80"></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="120"></div>
+        <div class="field"><label for="message">Message</label><textarea id="message" name="message" required minlength="10" maxlength="2000"></textarea><small class="muted"><span id="count">0</span> / 2000</small></div>
+        <!-- Honeypot: invisible to people, tempting to spam bots. If it's filled in, the server ignores the message. -->
+        <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+        <button type="submit" id="send">Send message ↗</button>
+        <p id="form-status" class="muted small" role="status" aria-live="polite"></p>
+      </form>
+
+      <aside class="info-list" id="contact-info" aria-label="Contact details"></aside>
+    </div>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>

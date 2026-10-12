@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090b">
+  <meta name="description" content="Task dashboard with priorities, due dates, filters, drag-and-drop ordering, undo and saved data.">
+  <meta property="og:title" content="Task Dashboard | Liorgio Ilanan">
+  <meta property="og:description" content="Task dashboard with priorities, due dates, filters, drag-and-drop ordering, undo and saved data.">
+  <title>Task Dashboard | Liorgio Ilanan</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script type="module" src="js/layout.js"></script>
+  <script type="module" src="js/pages/todo.js"></script>
+</head>
+<body data-section="work">
+  <div id="site-header"></div>
+  <main id="main" class="container">
+    <p class="eyebrow">Project 04 / Productivity</p>
+    <h1>Task <span class="accent">Dashboard.</span></h1>
+    <p class="lede">Capture a task, rank it, drag it into order, and keep moving. Everything is saved in your browser. Double-click a task to edit it.</p>
+    <section class="card">
+      <form id="task-form" class="task-form">
+        <div class="field grow"><label for="text">New task</label><input id="text" name="text" placeholder="Example: Practise HTML for 20 minutes" maxlength="120" autocomplete="off"></div>
+        <div class="field"><label for="priority">Priority</label><select id="priority" name="priority"><option value="medium">Medium</option><option value="high">High</option><option value="low">Low</option></select></div>
+        <div class="field"><label for="due">Due</label><input id="due" name="due" type="date"></div>
+        <button type="submit">+ Add task</button>
+      </form>
+      <div class="progress" role="img" aria-label="Completion progress"><div id="progress-bar"></div></div>
+      <div class="toolbar">
+        <div class="chips" id="filters" role="group" aria-label="Filter tasks"><button class="chip" data-filter="all" aria-pressed="true">All</button><button class="chip" data-filter="active">Active</button><button class="chip" data-filter="done">Done</button></div>
+        <div class="toolbar-right"><label class="sr" for="search">Search tasks</label><input id="search" type="search" placeholder="Search…"><button class="outline small" id="sort-prio" type="button">Sort by priority</button><button class="outline small" id="clear-done" type="button">Clear completed</button></div>
+      </div>
+      <p class="muted small"><strong class="accent" id="count">0</strong> remaining · <span id="progress-text"></span></p>
+      <div class="list" id="tasks"></div>
+    </section>
+    <a class="button outline" href="projects.html">← All Projects</a>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>

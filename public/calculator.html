@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090b">
+  <meta name="description" content="Smart Calculator with a hand-written recursive-descent expression parser, live preview and history.">
+  <meta property="og:title" content="Smart Calculator | Liorgio Ilanan">
+  <meta property="og:description" content="Smart Calculator with a hand-written recursive-descent expression parser, live preview and history.">
+  <title>Smart Calculator | Liorgio Ilanan</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script type="module" src="js/layout.js"></script>
+  <script type="module" src="js/pages/calculator.js"></script>
+</head>
+<body data-section="work">
+  <div id="site-header"></div>
+  <main id="main" class="container">
+    <p class="eyebrow">Project 03 / Algorithms</p>
+    <h1>Smart <span class="accent">Calculator.</span></h1>
+    <p class="lede">Type a full expression or use the keypad. It's powered by a real parser I wrote instead of <code>eval</code>, so it understands precedence, parentheses, functions and percentages, and it can't run injected code.</p>
+    <div class="grid calc-layout">
+      <section class="card calc" aria-label="Calculator">
+        <label for="expr">Expression</label>
+        <input id="expr" type="text" inputmode="text" placeholder="e.g. (12 + 8) × 3 + sqrt(16)" autocomplete="off" spellcheck="false">
+        <output id="result" class="calc-result" aria-live="polite">0</output>
+        <div class="keys" id="keys"></div>
+        <p class="muted small">Supports + − × ÷ ^ % mod, parentheses, sqrt, sin/cos (degrees), log, ln, π, and Ans. Press Enter to commit.</p>
+      </section>
+      <section class="card"><div class="section-head"><h2>History</h2><button class="outline small" id="clear-history" type="button">Clear</button></div><div class="list" id="history"></div></section>
+    </div>
+    <a class="button outline" href="projects.html">← All Projects</a>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>

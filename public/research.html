@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090b">
+  <meta name="description" content="Research notes on what makes a website feel professional, applied to this portfolio.">
+  <meta property="og:title" content="Research | Liorgio Ilanan">
+  <meta property="og:description" content="Research notes on what makes a website feel professional, applied to this portfolio.">
+  <title>Research | Liorgio Ilanan</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script type="module" src="js/layout.js"></script>
+</head>
+<body data-section="work">
+  <div id="site-header"></div>
+  <main id="main" class="container">
+    <p class="eyebrow">Research Notes 01 / Web design</p>
+    <h1>What makes a website feel <span class="accent">professional?</span></h1>
+    <p class="lede">A beginner-friendly research summary of common web design principles that help a site feel polished, clear and trustworthy. This is a qualitative learning summary, not a formal academic study.</p>
+
+    <div class="card reveal">
+      <p class="eyebrow">Research question</p>
+      <h2>How can a personal portfolio look polished while staying easy to use?</h2>
+      <p>Working hypothesis: clear hierarchy, readable contrast, consistent components, responsive layouts and purposeful interactions contribute to a coherent experience.</p>
+    </div>
+
+    <section class="section">
+      <h2 class="reveal">Key observations</h2>
+      <div class="case-step reveal"><div class="step-no">01</div><div><h3>Visual hierarchy</h3><p>Visitors often scan before reading in detail. Clear headings, concise descriptions and spacing help them understand what matters first.</p></div></div>
+      <div class="case-step reveal"><div class="step-no">02</div><div><h3>Contrast and readability</h3><p>A restrained accent colour can guide attention, but body text still needs comfortable contrast. WCAG asks for at least 4.5:1 for normal text. Try it in the <a href="color-lab.html" class="text-link">Color Lab</a>.</p></div></div>
+      <div class="case-step reveal"><div class="step-no">03</div><div><h3>Consistency</h3><p>Shared navigation, repeated card patterns and consistent buttons make a site easier to learn and reduce friction between pages.</p></div></div>
+      <div class="case-step reveal"><div class="step-no">04</div><div><h3>Purposeful motion</h3><p>Small effects confirm that an element is interactive. Motion should stay brief, and it should respect the <code>prefers-reduced-motion</code> setting.</p></div></div>
+      <div class="case-step reveal"><div class="step-no">05</div><div><h3>Responsive behaviour</h3><p>Layouts should adapt to phones, tablets and desktops. Cards stack on narrow screens, navigation collapses, and nothing needs horizontal scrolling.</p></div></div>
+      <div class="case-step reveal"><div class="step-no">06</div><div><h3>Performance and honesty</h3><p>Fast pages feel professional. This site has zero third-party libraries, and every demo clearly says when data is fictional or runs in your browser.</p></div></div>
+    </section>
+
+    <section class="section grid">
+      <article class="card reveal" data-tilt><h3>Applied in this portfolio</h3><p>Design tokens in CSS variables, data-driven navigation, reusable cards, responsive breakpoints, skip link, keyboard-friendly dialogs and reduced-motion support.</p></article>
+      <article class="card reveal" data-tilt><h3>Still to test</h3><p>Screen-reader walkthroughs, real-device testing, Lighthouse scores, and feedback from actual visitors.</p></article>
+    </section>
+
+    <div class="callout reveal"><p><strong>Research integrity note</strong></p><p>This page summarises general design principles for learning. It does not claim original user research or measured results. For formal academic use, add verified sources and cite them directly.</p></div>
+    <a class="button" href="projects.html">Explore Projects →</a>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>

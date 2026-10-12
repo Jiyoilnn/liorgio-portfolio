@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#060709">
+  <meta name="description" content="Liorgio Ilanan: UI/UX designer and full-stack web developer from Caloocan, Philippines. 3D interfaces, design systems and working full-stack demos.">
+  <meta property="og:title" content="Liorgio Ilanan — UI/UX Designer & Full-Stack Developer">
+  <meta property="og:description" content="Interfaces designed with intent and built end to end.">
+  <meta property="og:image" content="assets/img/portrait-bust.webp">
+  <title>Liorgio Ilanan — UI/UX Designer & Full-Stack Developer</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/img/portrait.webp" type="image/webp">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/mockups.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/home.css">
+  <script type="module" src="js/layout.js"></script>
+  <script type="module" src="js/pages/home.js"></script>
+</head>
+<body class="home">
+  <div id="site-header"></div>
+  <main id="main" class="home">
+
+    <!-- ============================================================ HERO -->
+    <section class="hero-studio" id="top" aria-labelledby="hero-title">
+      <canvas class="hero-scene" id="hero-scene" aria-hidden="true"></canvas>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">UI/UX Designer · Full-Stack Developer</p>
+          <h1 class="hero-title text-3d" id="hero-title">
+            <span class="ht-line"><span>Designing</span></span>
+            <span class="ht-line"><span>interfaces.</span></span>
+            <span class="ht-line"><span class="accent">Engineering</span></span>
+            <span class="ht-line"><span>products.</span></span>
+          </h1>
+          <p class="lede">I'm <strong>Liorgio Ilanan</strong>, a designer-developer from Caloocan, Philippines. I design clean, considered interfaces, then build them end to end, from the pixels to the API.</p>
+          <div class="hero-actions">
+            <a class="button" href="projects.html">Explore my work →</a>
+            <a class="button outline" data-email-link href="mailto:ilananliorgio@gmail.com">Email me</a>
+            <button class="button ghost copy-btn" type="button" data-copy-email aria-label="Copy my email address">Copy email</button>
+          </div>
+          <ul class="hero-stats" id="hero-stats" aria-label="Portfolio at a glance"></ul>
+        </div>
+
+        <div class="hero-stage" id="hero-stage">
+          <div class="stage-floor" aria-hidden="true"></div>
+          <div class="stage-glow" aria-hidden="true"></div>
+
+          <!-- the big 3D interface behind me -->
+          <div class="layer screen-main" style="--d: 14" aria-hidden="true"><div class="float-a" id="hero-screen"></div></div>
+
+          <!-- code panel -->
+          <div class="layer code-panel" style="--d: 22" aria-hidden="true">
+            <div class="float-b glass">
+              <div class="code-head"><i></i><i></i><i></i><span>api/orders.js</span></div>
+<pre><code><span class="k">router</span>.post(<span class="s">'/api/orders'</span>, <span class="k">async</span> ({ body }) =&gt; {
+  <span class="c">// never trust the client</span>
+  <span class="k">const</span> order = placeOrder(data, <span class="k">await</span> body());
+  <span class="k">return</span> { status: <span class="n">201</span>, body: order };
+});</code></pre>
+            </div>
+          </div>
+
+          <!-- me -->
+          <div class="layer portrait" style="--d: 6">
+            <div class="portrait-shadow" aria-hidden="true"></div>
+            <picture>
+              <source srcset="assets/img/portrait.webp" type="image/webp">
+              <img src="assets/img/portrait.png" width="1400" height="1204" alt="Liorgio Ilanan in a black crewneck, resting his hand on his chin and looking to the side" fetchpriority="high" decoding="async">
+            </picture>
+          </div>
+
+          <!-- the glass console I'm leaning on (covers the bottom edge of the photo) -->
+          <div class="layer console" style="--d: 3" aria-hidden="true">
+            <div class="console-top">
+              <div class="console-tabs"><span class="on">Design</span><span>Prototype</span><span>Code</span></div>
+              <div class="console-tokens"><i style="background:#ffd400"></i><i style="background:#f5f5f2"></i><i style="background:#181b20"></i><i style="background:#5ee6a8"></i></div>
+              <div class="console-meter"><span>Tests passing</span><b><i></i></b></div>
+              <div class="console-layers"><span><i></i>Hero / Portrait</span><span><i></i>Screen / Dashboard</span><span><i></i>Console / Glass</span></div>
+              <div class="console-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+
+          <!-- floating UI in front of me -->
+          <div class="layer chip-card card-ds" style="--d: 34" aria-hidden="true">
+            <div class="float-c glass">
+              <span class="mini-label">Design system</span>
+              <div class="ds-row"><b>Aa</b><span>Display 800<br><small>-0.03em tracking</small></span></div>
+              <div class="ds-swatches"><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="layer chip-card card-toast" style="--d: 40" aria-hidden="true">
+            <div class="float-a glass toast-card"><span class="ok-dot"></span><div><b>201 Created</b><small>Order FR-1410 placed</small></div></div>
+          </div>
+          <div class="layer chip-card card-badges" style="--d: 28" aria-hidden="true">
+            <div class="float-b badge-cloud"><span>HTML</span><span>CSS</span><span>JS</span><span>Node</span></div>
+          </div>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#intro" aria-label="Scroll to introduction"><span></span></a>
+    </section>
+
+    <!-- ============================================================ INTRO -->
+    <section class="band intro" id="intro">
+      <div class="container">
+        <p class="eyebrow reveal">Hello</p>
+        <p class="intro-statement reveal-3d">I help ideas become <em>clear interfaces</em> and <em>working products</em>. Design and code, by the same pair of hands, so nothing gets lost in between.</p>
+        <div class="grid three values">
+          <article class="card reveal" data-tilt><span class="v-num">01</span><h3>Design with intent</h3><p>Every colour, spacing step and animation has a job. If it doesn't help the user, it goes.</p></article>
+          <article class="card reveal" data-tilt><span class="v-num">02</span><h3>Build end to end</h3><p>Responsive front ends, validated APIs and automated tests. The demos on this site really work.</p></article>
+          <article class="card reveal" data-tilt><span class="v-num">03</span><h3>Honest by default</h3><p>Concepts are labelled as concepts. Sample data is labelled as sample data. No invented clients or results.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ FEATURED -->
+    <section class="band featured" id="featured" aria-labelledby="featured-title">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow reveal">Featured work</p><h2 class="reveal-3d" id="featured-title">Big ideas, shown big.</h2></div>
+          <a class="button outline reveal" href="projects.html">All 34 projects →</a>
+        </div>
+        <div class="feature-rows" id="featured-list"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ UI/UX SHOWCASE -->
+    <section class="band showcase" id="showcase" aria-labelledby="showcase-title">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow reveal">UI/UX showcase</p><h2 class="reveal-3d" id="showcase-title">How I design, not just what.</h2></div>
+          <p class="reveal">A design system you can touch, a wireframe that turns into a final screen, and layouts that adapt to any device.</p>
+        </div>
+
+        <!-- design system -->
+        <div class="ds-panel reveal" id="design-system">
+          <div class="ds-col">
+            <span class="mini-label">Colour tokens</span>
+            <div class="token-grid" id="token-grid"></div>
+            <span class="mini-label">Type scale</span>
+            <div class="type-scale">
+              <div><span class="ts-display">Display</span><code>clamp(2.9rem, 7.4vw, 6.4rem) · 800</code></div>
+              <div><span class="ts-h2">Heading two</span><code>clamp(1.8rem, 3.6vw, 2.9rem) · 800</code></div>
+              <div><span class="ts-body">Body text reads at 16px with a 1.65 line height.</span><code>16px · 400</code></div>
+              <div><span class="ts-mono">LABEL / MONO</span><code>0.72rem · 600 · 0.18em</code></div>
+            </div>
+          </div>
+          <div class="ds-col">
+            <span class="mini-label">Components (all interactive)</span>
+            <div class="comp-grid">
+              <div class="comp"><button type="button" class="small">Primary</button><button type="button" class="small outline">Secondary</button></div>
+              <div class="comp"><label class="switch"><input type="checkbox" checked><span></span> Notifications</label></div>
+              <div class="comp"><label class="sr" for="demo-input">Demo input</label><input id="demo-input" placeholder="Search components…"></div>
+              <div class="comp"><span class="label live">Live</span><span class="label concept">Concept</span><span class="badge completed">Completed</span></div>
+              <div class="comp"><div class="seg" role="radiogroup" aria-label="View mode"><button type="button" role="radio" aria-checked="true">Grid</button><button type="button" role="radio" aria-checked="false">List</button><button type="button" role="radio" aria-checked="false">Board</button></div></div>
+              <div class="comp"><label class="sr" for="demo-range">Demo slider</label><input id="demo-range" type="range" min="0" max="100" value="64"><output id="demo-range-out">64%</output></div>
+            </div>
+            <span class="mini-label">Radius & elevation</span>
+            <div class="radius-row"><i style="border-radius:8px"></i><i style="border-radius:12px"></i><i style="border-radius:18px"></i><i style="border-radius:28px"></i><i style="border-radius:999px"></i></div>
+          </div>
+        </div>
+
+        <!-- wireframe → final -->
+        <div class="compare-wrap">
+          <div class="compare-copy reveal">
+            <span class="mini-label">Wireframe → final</span>
+            <h3>Structure first, polish second.</h3>
+            <p>Drag the handle. The wireframe settles hierarchy and layout before a single colour is chosen. The final design keeps the same bones.</p>
+          </div>
+          <div class="compare reveal" id="compare">
+            <div class="compare-final" id="compare-final"></div>
+            <div class="compare-wire" aria-hidden="true">
+              <div class="wf-nav"><i></i><i></i><i></i><i></i></div>
+              <div class="wf-hero"><i class="wf-pill"></i><i class="wf-h"></i><i class="wf-h short"></i><div class="wf-row"><i class="wf-btn"></i><i class="wf-btn ghost"></i></div></div>
+              <div class="wf-shot"><i></i><i></i></div>
+              <span class="wf-label">WIREFRAME</span>
+            </div>
+            <div class="compare-handle" aria-hidden="true"><span>⇆</span></div>
+            <label class="sr" for="compare-range">Compare wireframe and final design</label>
+            <input type="range" id="compare-range" min="0" max="100" value="50">
+          </div>
+        </div>
+
+        <!-- mobile screens -->
+        <div class="phones-wrap">
+          <div class="phones" id="phones"></div>
+          <div class="reveal">
+            <span class="mini-label">Mobile apps</span>
+            <h3>Designed for thumbs.</h3>
+            <p>Primary actions in the thumb zone, readable type, honest numbers. Hover or tap a phone to bring it forward.</p>
+            <a class="text-link" href="projects.html?filter=mobile">See all mobile concepts →</a>
+          </div>
+        </div>
+
+        <!-- responsive demo -->
+        <div class="resp-wrap">
+          <div class="reveal">
+            <span class="mini-label">Responsive design</span>
+            <h3>One layout, every screen.</h3>
+            <p>This is real HTML using CSS container queries, not an image. Each frame is the same component at a different width.</p>
+          </div>
+          <div class="resp-frames" id="resp-frames"></div>
+        </div>
+
+        <div class="center"><a class="button outline" href="projects.html?filter=uiux">Browse UI/UX projects →</a></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ WEBSITES -->
+    <section class="band websites" id="websites" aria-labelledby="websites-title">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow reveal">Website design</p><h2 class="reveal-3d" id="websites-title">Ten sites, ten personalities.</h2></div>
+          <div class="rail-controls"><button class="icon-btn" type="button" id="rail-prev" aria-label="Scroll websites left">←</button><button class="icon-btn" type="button" id="rail-next" aria-label="Scroll websites right">→</button></div>
+        </div>
+      </div>
+      <div class="rail" id="web-rail" tabindex="0" aria-label="Website design projects"></div>
+      <div class="container center"><a class="button outline" href="projects.html?filter=web">See all website concepts →</a></div>
+    </section>
+
+    <!-- ============================================================ FULL-STACK -->
+    <section class="band fullstack" id="fullstack" aria-labelledby="fullstack-title">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow reveal">Full-stack development</p><h2 class="reveal-3d" id="fullstack-title">From the button to the database.</h2></div>
+          <p class="reveal">Four of these run for real in this repository on a zero-dependency Node.js API. The rest are planned systems with their architecture and UI designed.</p>
+        </div>
+        <div class="stack-flow reveal" aria-label="How the demos work">
+          <span>Browser UI</span><i></i><span>api.js client</span><i></i><span>Node.js routes</span><i></i><span>Shared rules</span><i></i><span>JSON database</span>
+        </div>
+        <div class="bento compact" id="fullstack-list"></div>
+        <div class="center"><a class="button outline" href="projects.html?filter=fullstack">All full-stack projects →</a></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ SKILLS -->
+    <section class="band skills" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow reveal">Skills & stack</p><h2 class="reveal-3d" id="skills-title">What I bring to a project.</h2></div>
+        </div>
+        <div class="cap-grid" id="capabilities"></div>
+        <div class="tech-wrap reveal">
+          <div class="tech-legend"><span><i class="core"></i>Core skill</span><span><i class="demo"></i>Used to build the demos here</span><span><i class="placeholder"></i>Placeholder (edit me)</span></div>
+          <ul class="tech-cloud" id="tech-cloud"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ PROCESS -->
+    <section class="band process" id="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow reveal">Process</p><h2 class="reveal-3d" id="process-title">Six steps, no surprises.</h2></div>
+        </div>
+        <ol class="process-track" id="process-track"></ol>
+      </div>
+    </section>
+
+    <!-- ============================================================ CASE STUDIES -->
+    <section class="band cases" id="cases" aria-labelledby="cases-title">
+      <div class="container">
+        <div class="section-head"><div><p class="eyebrow reveal">Case studies</p><h2 class="reveal-3d" id="cases-title">The thinking behind the work.</h2></div></div>
+        <div class="grid three" id="case-list"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ ABOUT -->
+    <section class="band about" id="about" aria-labelledby="about-title">
+      <div class="container about-grid">
+        <div class="about-photo reveal" data-tilt>
+          <img src="assets/img/portrait-bust.webp" width="720" height="720" loading="lazy" decoding="async" alt="Portrait of Liorgio Ilanan">
+          <span class="about-tag glass">Based in Caloocan, PH</span>
+        </div>
+        <div>
+          <p class="eyebrow reveal">About me</p>
+          <h2 class="reveal-3d" id="about-title">Curious by nature. <span class="accent">Precise</span> by habit.</h2>
+          <p class="reveal">I'm Liorgio Ilanan, a UI/UX designer and web developer from North Caloocan, Philippines. I love turning ideas into useful, thoughtful websites: first by understanding who they're for, then by designing and building every layer myself.</p>
+          <p class="reveal">This portfolio is my studio. Every project started as a small exercise and was rebuilt with a real back end, tests and a proper design system as I learned more. I learn by building, and I'm always building something.</p>
+          <dl class="about-facts reveal">
+            <div><dt>Focus</dt><dd>UI/UX design & full-stack web</dd></div>
+            <div><dt>Location</dt><dd>Caloocan City, Metro Manila</dd></div>
+            <div><dt>Contact</dt><dd><a href="#contact">Email (preferred)</a></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ EXPERIENCE -->
+    <section class="band experience" id="experience" aria-labelledby="experience-title">
+      <div class="container narrow">
+        <p class="eyebrow reveal">Experience</p>
+        <h2 class="reveal-3d" id="experience-title">The path so far.</h2>
+        <ol class="timeline-v2" id="experience-list"></ol>
+      </div>
+    </section>
+
+    <!-- ============================================================ FAQ -->
+    <section class="band faq" id="faq" aria-labelledby="faq-title">
+      <div class="container narrow">
+        <p class="eyebrow reveal">FAQ</p>
+        <h2 class="reveal-3d" id="faq-title">Good questions.</h2>
+        <div class="faq-list" id="faq-list"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ CONTACT -->
+    <section class="band contact-band" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-card reveal">
+          <div class="contact-glow" aria-hidden="true"></div>
+          <p class="eyebrow">Contact</p>
+          <h2 class="contact-title text-3d" id="contact-title">Let's build <span class="accent">something.</span></h2>
+          <p class="lede">Have a project, a role or a question? Email is the best way to reach me.</p>
+          <a class="contact-email" data-email-link data-email-text href="mailto:ilananliorgio@gmail.com">ilananliorgio@gmail.com</a>
+          <div class="hero-actions">
+            <a class="button" data-email-link href="mailto:ilananliorgio@gmail.com">Send an email ↗</a>
+            <button class="button outline" type="button" data-copy-email>Copy email address</button>
+            <a class="button ghost" href="contact.html">Use the contact form</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>

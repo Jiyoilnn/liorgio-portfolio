@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090b">
+  <meta name="description" content="Live business analytics dashboard: KPIs, revenue trends, best sellers and a 3D hourly chart computed from real orders.">
+  <meta property="og:title" content="Business Analytics | Liorgio Ilanan">
+  <meta property="og:description" content="Live business analytics dashboard: KPIs, revenue trends, best sellers and a 3D hourly chart computed from real orders.">
+  <title>Business Analytics | Liorgio Ilanan</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script type="module" src="js/layout.js"></script>
+  <script type="module" src="js/pages/dashboard.js"></script>
+</head>
+<body data-section="work" data-api>
+  <div id="site-header"></div>
+  <main id="main" class="container">
+    <p class="eyebrow">Featured concept / Business intelligence</p>
+    <h1>Business <span class="accent">Overview.</span></h1>
+    <p class="lede">A dashboard for the two demo shops. Every figure is calculated from the orders in the database, including any you place in <a class="text-link" href="friesta.html">Friesta</a> or the <a class="text-link" href="storefront.html">Storefront</a>.</p>
+
+    <div class="toolbar">
+      <div class="chips" id="range" role="group" aria-label="Date range"></div>
+      <div class="toolbar-right">
+        <label class="sr" for="shop">Shop</label>
+        <select id="shop"><option value="all">All shops</option><option value="friesta">Friesta</option><option value="storefront">Storefront</option></select>
+        <button class="outline small" id="refresh" type="button">Refresh ↻</button>
+        <label class="check"><input type="checkbox" id="auto"> Auto-refresh</label>
+        <button class="outline small" id="admin" type="button">Admin mode</button>
+      </div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat" data-kpi="revenue"><span class="label">Revenue</span><strong>—</strong><span class="delta"></span></div>
+      <div class="stat" data-kpi="orders"><span class="label">Orders</span><strong>—</strong><span class="delta"></span></div>
+      <div class="stat" data-kpi="avgOrder"><span class="label">Average order</span><strong>—</strong><span class="delta"></span></div>
+    </div>
+
+    <article class="panel">
+      <div class="section-head"><div><p class="eyebrow">Sales overview</p><h2>Daily revenue</h2></div><button class="outline small" id="toggle-table" type="button" aria-expanded="false" aria-controls="series-table">View as table</button></div>
+      <div id="revenue-chart" class="chart-wrap"></div>
+      <div id="series-table" class="table-wrap" hidden><table><thead><tr><th>Date</th><th>Orders</th><th>Revenue</th></tr></thead><tbody id="series-body"></tbody></table></div>
+    </article>
+
+    <section class="grid panels">
+      <article class="panel"><p class="eyebrow">Best sellers</p><h2>Top items by revenue</h2><div id="top-items"></div></article>
+      <article class="panel"><p class="eyebrow">Mix</p><h2>Revenue by shop</h2><div id="shop-split"></div><h3 class="mt">Order status</h3><ul class="status-list" id="status-list"></ul></article>
+    </section>
+
+    <article class="panel">
+      <div class="section-head"><div><p class="eyebrow">3D · Move your mouse over it</p><h2>When do orders come in?</h2></div><strong class="accent" id="peak"></strong></div>
+      <canvas id="hours-canvas" class="hours-canvas" role="img" aria-label="3D bar chart of orders per hour of the day"></canvas>
+      <div class="hour-axis" aria-hidden="true"><span>12AM</span><span>6AM</span><span>12PM</span><span>6PM</span><span>11PM</span></div>
+    </article>
+
+    <article class="panel">
+      <div class="section-head"><div><p class="eyebrow">Recent orders</p><h2>Order summary</h2></div><span class="muted small" id="updated"></span></div>
+      <div class="table-wrap"><table><thead><tr><th>Order</th><th>Shop</th><th>Customer</th><th>Placed (PH time)</th><th>Total</th><th>Status</th></tr></thead><tbody id="orders-body"></tbody></table></div>
+      <p class="muted small">Customer names are shortened on purpose, so the dashboard never exposes full names. Changing a status needs the admin key (sent in an <code>X-Admin-Key</code> header).</p>
+    </article>
+
+    <div class="callout"><p><strong>Data disclaimer</strong></p><p>The ~400 starter orders are generated fictional data for interface demonstration, not real business performance.</p></div>
+    <a class="button outline" href="projects.html">← All Projects</a>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>

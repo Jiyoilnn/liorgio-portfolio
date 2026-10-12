@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090b">
+  <meta name="description" content="Streetwear storefront: full-stack e-commerce concept with search, filters, stock tracking, cart, promo codes and a checkout API.">
+  <meta property="og:title" content="Streetwear Storefront | Liorgio Ilanan">
+  <meta property="og:description" content="Streetwear storefront: full-stack e-commerce concept with search, filters, stock tracking, cart, promo codes and a checkout API.">
+  <title>Streetwear Storefront | Liorgio Ilanan</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script type="module" src="js/layout.js"></script>
+  <script type="module" src="js/pages/storefront.js"></script>
+</head>
+<body data-section="work" data-api>
+  <div id="site-header"></div>
+  <main id="main" class="container">
+    <section class="hero store-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Featured concept / E-commerce</p>
+        <h1>Everyday essentials.<br><span class="accent">Streetwear, refined.</span></h1>
+        <p class="lede">A storefront concept for a modern basics label. Search and filter products, watch stock levels, build a cart and check out. Prices and totals are calculated by the server.</p>
+        <div class="hero-actions">
+          <a class="button" href="#shop">Shop the drop ↓</a>
+          <button class="outline cart-fab" id="cart-btn" type="button">Cart <span class="count">0</span></button>
+        </div>
+        <p class="muted small">Free shipping over ₱2,000 · try code <b class="accent">WELCOME10</b></p>
+      </div>
+      <div class="ring-scene" aria-hidden="true"><div class="ring-track" id="ring-track"></div></div>
+    </section>
+
+    <section class="section" id="shop">
+      <div class="section-head"><div><p class="eyebrow">Collection / Demo products</p><h2>Latest essentials</h2></div><span class="muted small" id="result-count" aria-live="polite"></span></div>
+      <div class="toolbar">
+        <div class="chips" id="chips" role="group" aria-label="Product categories"></div>
+        <div class="toolbar-right">
+          <label class="sr" for="search">Search products</label>
+          <input id="search" type="search" placeholder="Search hoodie, black, cap…" autocomplete="off">
+          <label class="sr" for="sort">Sort products</label>
+          <select id="sort"><option value="">Featured</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option><option value="name">Name A–Z</option></select>
+        </div>
+      </div>
+      <div class="grid three" id="product-grid" aria-live="polite"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+    </section>
+
+    <div class="callout"><p>All products, prices and stock are illustrative placeholders for portfolio demonstration only. No payment is taken.</p></div>
+    <a class="button outline" href="projects.html">← All Projects</a>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>

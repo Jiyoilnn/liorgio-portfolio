@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090b">
+  <meta name="description" content="Friesta: full-stack food-ordering concept with a live menu, cart, promo codes, checkout API and a 3D fries carton.">
+  <meta property="og:title" content="Friesta | Liorgio Ilanan">
+  <meta property="og:description" content="Friesta: full-stack food-ordering concept with a live menu, cart, promo codes, checkout API and a 3D fries carton.">
+  <title>Friesta | Liorgio Ilanan</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script type="module" src="js/layout.js"></script>
+  <script type="module" src="js/pages/friesta.js"></script>
+</head>
+<body data-section="work" data-api>
+  <div id="site-header"></div>
+  <main id="main" class="container">
+    <section class="hero friesta-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Featured concept / Food &amp; beverage</p>
+        <h1>Fresh-cut fries.<br><span class="accent">Made for the moment.</span></h1>
+        <p class="lede">A food-ordering concept for Friesta, a fries brand in Bagong Silang, Caloocan. Pick your flavors, choose pickup or delivery, and place a real order against the Node API.</p>
+        <div class="hero-actions">
+          <a class="button" href="#menu">Order now ↓</a>
+          <button class="outline cart-fab" id="cart-btn" type="button">View cart <span class="count">0</span></button>
+        </div>
+        <div><span class="pill">Menu API</span><span class="pill">Promo codes</span><span class="pill">Server-side pricing</span><span class="pill">Canvas 3D</span></div>
+      </div>
+      <div class="hero-stage"><canvas id="fries-canvas" aria-label="A 3D carton of fries you can look around by moving your mouse" role="img"></canvas></div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="section-head"><div><p class="eyebrow">Menu / Sample items</p><h2>Simple food. Good mood.</h2></div></div>
+      <div class="chips" id="chips" role="group" aria-label="Menu categories"></div>
+      <div class="grid three menu-grid" id="menu-grid" aria-live="polite"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+    </section>
+
+    <section class="section grid">
+      <article class="card reveal" data-tilt><span class="tag">VISIT US</span><h2>Find Friesta.</h2><p><strong>Friesta Phase 1, Bagong Silang, Caloocan</strong><br>In front of the plaza.</p></article>
+      <article class="card reveal" data-tilt><span class="tag">TRY A CODE</span><h2>FRIESTA20</h2><p>Spend ₱150 or more and take ₱20 off at checkout. Orders over ₱300 get free delivery.</p></article>
+    </section>
+
+    <div class="callout"><p><strong>Portfolio note</strong></p><p>This is a design and engineering concept. Menu, prices and promotions are samples. Orders are demo orders and nothing is prepared, charged or delivered. Replace the seed data with confirmed business details before using it for a real shop.</p></div>
+    <a class="button outline" href="projects.html">← All Projects</a>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>

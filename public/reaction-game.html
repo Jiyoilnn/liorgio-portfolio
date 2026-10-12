@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090b">
+  <meta name="description" content="Five-round reaction time game with averages, personal best and an online leaderboard.">
+  <meta property="og:title" content="Reaction Game | Liorgio Ilanan">
+  <meta property="og:description" content="Five-round reaction time game with averages, personal best and an online leaderboard.">
+  <title>Reaction Game | Liorgio Ilanan</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script type="module" src="js/layout.js"></script>
+  <script type="module" src="js/pages/reaction.js"></script>
+</head>
+<body data-section="work" data-api>
+  <div id="site-header"></div>
+  <main id="main" class="container">
+    <p class="eyebrow">Project 07 / Mini game</p>
+    <h1>Reaction <span class="accent">Game.</span></h1>
+    <p class="lede">Wait for the box to turn green, then click (or press Space) as fast as you can. Five rounds, and your average counts.</p>
+    <div class="grid quiz-layout">
+      <section class="card">
+        <div id="game-box" class="game-box idle" role="button" tabindex="0" aria-label="Reaction game area. Press Space or Enter to play."><div class="gb-title"></div><div class="gb-sub"></div></div>
+        <ol class="times" id="times" aria-label="Your times"></ol>
+        <p>Personal best (average): <strong class="accent" id="best">—</strong></p>
+        <div id="submit-area" hidden><form class="inline" id="submit-form"><input name="name" placeholder="Name for the leaderboard" maxlength="20" aria-label="Your name"><button type="submit">Submit</button></form></div>
+      </section>
+      <aside class="card"><span class="tag">LEADERBOARD</span><h3>Fastest averages</h3><ol class="board" id="board"></ol></aside>
+    </div>
+    <p class="muted small">Average human reaction time to a visual cue is roughly 200–270 ms. Your device and screen add some delay too.</p>
+    <a class="button outline" href="projects.html">← All Projects</a>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>

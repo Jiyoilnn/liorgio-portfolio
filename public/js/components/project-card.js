@@ -1,0 +1,40 @@
+/**
+ * project-card.js — one reusable card for every project, everywhere on the site.
+ *
+ * The whole card is clickable (a "stretched link" covers it), but the optional
+ * "Live demo" link sits above that layer so it stays independently clickable.
+ */
+import { h } from '../lib/dom.js';
+import { mockup, isPhoneKind } from './mockup.js';
+import { STATUS_LABEL, CATEGORY_LABEL } from '../data/projects.js';
+
+export const detailUrl = (p) => `project.html?id=${encodeURIComponent(p.id)}`;
+
+export function statusBadge(p) {
+  return h('span', { class: `label ${p.status === 'live' ? 'live' : 'concept'}` }, STATUS_LABEL[p.status]);
+}
+
+/**
+ * @param {object} p  a project from data/projects.js
+ * @param {{ size?: string, showTech?: boolean }} [opts]  size overrides p.size
+ */
+export function projectCard(p, { size = p.size, showTech = true } = {}) {
+  const phone = isPhoneKind(p.preview.kind);
+  return h('article', {
+    class: `pcard ${size ? `size-${size}` : ''} ${phone ? 'is-phone' : 'is-browser'}`,
+    'data-tilt': '',
+    dataset: { category: p.category, platform: p.platform },
+    style: { '--accent-p': p.preview.theme.accent },
+  },
+    // invisible full-card link (mouse/touch). The real, focusable link is the title below.
+    h('a', { class: 'pcard-cover', href: detailUrl(p), tabindex: -1, 'aria-hidden': 'true' }),
+    h('div', { class: 'pcard-stage' }, h('div', { class: 'pcard-mock' }, mockup(p.preview, p.id, { label: `Preview of ${p.title}` }))),
+    h('div', { class: 'pcard-body' },
+      h('div', { class: 'pcard-labels' }, statusBadge(p), h('span', { class: 'pcard-cat' }, CATEGORY_LABEL[p.category])),
+      h('h3', {}, h('a', { class: 'pcard-link', href: detailUrl(p) }, p.title)),
+      h('p', { class: 'pcard-summary' }, p.summary),
+      showTech ? h('div', { class: 'pcard-tech' }, p.tech.slice(0, 3).map((x) => h('span', {}, x))) : null,
+      h('div', { class: 'pcard-actions' },
+        h('span', { class: 'text-link', 'aria-hidden': 'true' }, 'View details →'),
+        p.demo ? h('a', { class: 'pcard-demo', href: p.demo }, 'Live demo ↗') : null)));
+}
