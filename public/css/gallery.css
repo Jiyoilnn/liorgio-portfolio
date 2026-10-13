@@ -123,3 +123,6 @@
 .pager-link:hover { border-color: var(--accent); transform: translateY(-2px); }
 .pager-link.next { text-align: right; }
 .not-found { padding: 80px 0; }
+/* pre-rendered (no-JS / crawler) version of a card: text only, upgraded by JavaScript */
+.pcard-static { justify-content: flex-end; }
+.pcard-static .pcard-body { padding: 24px; }

@@ -17,13 +17,13 @@ export function renderHomeSections() {
 
   // ---- hero stats (computed, never hard-coded) -------------------------------------------
   const live = projects.filter((p) => p.status === 'live').length;
-  qs('#hero-stats')?.append(
+  qs('#hero-stats')?.replaceChildren(
     h('li', {}, h('b', {}, String(projects.length)), h('span', {}, 'Projects')),
     h('li', {}, h('b', {}, String(live)), h('span', {}, 'Live demos')),
     h('li', {}, h('b', {}, '0'), h('span', {}, 'Dependencies')));
 
   // ---- featured rows ----------------------------------------------------------------
-  qs('#featured-list')?.append(...featuredIds.map(byId).filter(Boolean).map((p) => {
+  qs('#featured-list')?.replaceChildren(...featuredIds.map(byId).filter(Boolean).map((p) => {
     const phone = isPhoneKind(p.preview.kind);
     return h('article', { class: 'feature-row' },
       h('a', { class: `fr-stage ${phone ? 'is-phone' : ''}`, href: detailUrl(p), 'data-scroll-tilt': '', style: { '--accent-p': p.preview.theme.accent }, 'aria-label': `${p.title}: view details` },
@@ -41,7 +41,7 @@ export function renderHomeSections() {
   // ---- website rail -------------------------------------------------------------------
   const rail = qs('#web-rail');
   if (rail) {
-    rail.append(...projects.filter((p) => p.category === 'web').map((p) => projectCard(p, { size: '' })));
+    rail.replaceChildren(...projects.filter((p) => p.category === 'web').map((p) => projectCard(p, { size: '' })));
     const step = () => (rail.firstElementChild?.getBoundingClientRect().width ?? 400) + 18;
     qs('#rail-prev')?.addEventListener('click', () => rail.scrollBy({ left: -step(), behavior: 'smooth' }));
     qs('#rail-next')?.addEventListener('click', () => rail.scrollBy({ left: step(), behavior: 'smooth' }));
@@ -49,11 +49,11 @@ export function renderHomeSections() {
 
   // ---- full-stack: live demos first ------------------------------------------------------
   const fs = projects.filter((p) => p.category === 'fullstack').sort((a, b) => (b.status === 'live') - (a.status === 'live')).slice(0, 6);
-  qs('#fullstack-list')?.append(...fs.map((p) => projectCard(p, { size: '' })));
+  qs('#fullstack-list')?.replaceChildren(...fs.map((p) => projectCard(p, { size: '' })));
 
   // ---- skills ------------------------------------------------------------------------------
-  qs('#capabilities')?.append(...capabilities.map((c) => h('article', { class: 'card cap reveal', 'data-tilt': '' }, icon(c.icon), h('h3', {}, c.title), h('p', {}, c.text))));
-  qs('#tech-cloud')?.append(...tech.map((t, i) => {
+  qs('#capabilities')?.replaceChildren(...capabilities.map((c) => h('article', { class: 'card cap reveal', 'data-tilt': '' }, icon(c.icon), h('h3', {}, c.title), h('p', {}, c.text))));
+  qs('#tech-cloud')?.replaceChildren(...tech.map((t, i) => {
     const tipId = `tech-tip-${i}`;
     const btn = h('button', { type: 'button', 'aria-describedby': tipId, 'aria-expanded': 'false' }, h('i', { class: `dot ${t.status}` }), t.name);
     btn.addEventListener('click', () => btn.setAttribute('aria-expanded', String(btn.getAttribute('aria-expanded') !== 'true')));
@@ -62,22 +62,22 @@ export function renderHomeSections() {
   }));
 
   // ---- process ------------------------------------------------------------------------------
-  qs('#process-track')?.append(...process.map((p, i) => h('li', { class: 'pstep' },
+  qs('#process-track')?.replaceChildren(...process.map((p, i) => h('li', { class: 'pstep' },
     h('div', { class: 'pnode' }, h('span', {}, String(i + 1).padStart(2, '0'))),
     h('div', { class: 'card', 'data-tilt': '' }, h('h3', {}, p.step), h('p', {}, p.text)))));
 
   // ---- case studies ---------------------------------------------------------------------------
-  qs('#case-list')?.append(...caseStudies.map((c) => h('a', { class: 'card case-card reveal', href: c.href, 'data-tilt': '', style: { '--accent-p': c.preview.theme.accent } },
+  qs('#case-list')?.replaceChildren(...caseStudies.map((c) => h('a', { class: 'card case-card reveal', href: c.href, 'data-tilt': '', style: { '--accent-p': c.preview.theme.accent } },
     h('div', { class: 'case-stage' }, mockup(c.preview, c.title, { label: `${c.title} preview` })),
     h('div', { class: 'case-body' }, h('span', { class: 'tag' }, c.tag.toUpperCase()), h('h3', {}, c.title), h('p', {}, c.text), h('span', { class: 'text-link' }, 'Read the case study →')))));
 
   // ---- experience --------------------------------------------------------------------------
-  qs('#experience-list')?.append(...experience.filter((e) => !e.placeholder || site.showPlaceholders).map((e) => h('li', { class: `tl-item reveal ${e.placeholder ? 'placeholder' : ''}` },
+  qs('#experience-list')?.replaceChildren(...experience.filter((e) => !e.placeholder || site.showPlaceholders).map((e) => h('li', { class: `tl-item reveal ${e.placeholder ? 'placeholder' : ''}` },
     h('div', { class: 'tl-period' }, e.period),
     h('div', {}, e.placeholder ? h('span', { class: 'label concept', style: { marginBottom: '10px' } }, 'Placeholder') : null, h('h3', {}, e.role), h('div', { class: 'tl-org' }, e.org), h('p', {}, e.text)))));
 
   // ---- FAQ ------------------------------------------------------------------------------------
-  qs('#faq-list')?.append(...faq.map((f, i) => h('details', { class: 'reveal', open: i === 0 }, h('summary', {}, f.q), h('p', {}, f.a))));
+  qs('#faq-list')?.replaceChildren(...faq.map((f, i) => h('details', { class: 'reveal', open: i === 0 }, h('summary', {}, f.q), h('p', {}, f.a))));
 
   dispatchEvent(new Event('content-updated'));
 }

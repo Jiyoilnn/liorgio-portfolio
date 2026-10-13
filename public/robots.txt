@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://jiyoilnn.github.io/liorgio-portfolio/sitemap.xml

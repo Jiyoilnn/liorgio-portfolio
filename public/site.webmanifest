@@ -1,0 +1,22 @@
+{
+  "name": "Liorgio Ilanan — Web Designer & Developer",
+  "short_name": "Liorgio",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#060709",
+  "theme_color": "#060709",
+  "description": "Web designer and developer from Caloocan, Philippines, building interactive websites, UI/UX concepts and full-stack web apps.",
+  "icons": [
+    {
+      "src": "assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
